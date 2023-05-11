@@ -29,14 +29,14 @@ inrl({
                 fromMe :true,
                 onlyPm :false,
                 onlyGroup :false,
-		            pattern: '&eval',
-		            desc: 'this send evaled data for your request',
+		pattern: '$eval',
+		desc: 'this send evaled data for your request',
                 sucReact: "💥",
                 category: ["system", "all"],
                 type : "owner",
                 usage: "give evaled data for your script"
 	   },
-	async (message, client, Texts, cmd, store) => {
+	async (message, client, Texts, cmd, store, chatUpdate) => {
     let m = message, c = conn = client;
     if(!message.client.body.trim().startsWith('>')) return;
     let match = message.client.body.replace('>','').trim();let text = match;

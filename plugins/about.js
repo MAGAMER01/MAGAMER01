@@ -22,40 +22,9 @@ inrl({
     sucReact: "💯",
     category: ["system", "all"],
     type: 'info'
-}, async (message, client, match) => {
-    let data = await getVar();
-    let {
-        FOOTER,
-        BOT_INFO,
-        PREFIX
-    } = data.data[0];
-    let perfix = PREFIX == 'false' ? '' : PREFIX;
-    let rows = [];
-    for (i = 0; i < categories.length; i++) {
-        if ([i]) rows.push({
-            title: `${categories[i]}-menu`,
-            rowId: `${perfix}${categories[i]}-menu`,
-            description: `${FOOTER}`
-        })
-    }
-    const sections = [{
-        title: `${BOT_INFO.split(',')[0]} list menu`,
-        rows: rows
-    }]
-    const button = {
-        text: `╭─❒「 𝗜𝗡𝗙𝗢 𝗕𝗢𝗧 」
-│⬡ 𝙋𝙧𝙚𝙛𝙞𝙭 𝘽𝙤𝙩 : ⌜  *${perfix}*  ⌟
-│⬡ 𝙉𝙖𝙢𝙚𝘽𝙤𝙩 : ${BOT_INFO.split(',')[0]}
-│⬡ 𝙐𝙨𝙚𝙧 : ${message.client.pushName}
-│⬡ 𝙇𝙞𝙗 : 𝘽𝙖𝙞𝙡𝙚𝙮𝙨
-╰─❒`,
-        footer: FOOTER,
-        buttonText: "list ⎙",
-        sections,
-    }
-    return await client.sendMessage(message.from, button, {
-        quoted: message
-    });
+}, async (message) => {
+    let b=1,c="";commands.map((e=>{e.pattern&&e.desc?c+=`${b++} *${e.pattern.replace(/[^a-zA-Z0-9,-]/g,"")}*\n_${e.desc}_\n\n`:c+=`${b++} *${e.pattern.replace(/[^a-zA-Z0-9,-]/g,"")}*\n`}));
+    return await message.send(c);
 });
 inrl({
     pattern: 'ping ?(.*)',
@@ -214,8 +183,7 @@ inrl({
     usage: 'to convert texts to stylish example : fancy 10 inrl'
 }, async (message, client, match) => {
     try {
-        if (!message.quoted) return await message.reply('replay To An Text Message');
-        if (!match) {
+        if (!match || !message.quoted) {
             let NewText = `
 1 Fᴀɴᴄʏ
 2 ʎɔuɐℲ

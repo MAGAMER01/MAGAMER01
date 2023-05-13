@@ -8,7 +8,7 @@ module.exports = {
         API_KEY: process.env.HEROKU_API_KEY,
         APP_NAME: process.env.HEROKU_APP_NAME
     },
-    BASE_URL : "https://inrl-web.onrender.com/",
+    BASE_URL : "https://inrl-web.cyclic.app/",
     TUTORIAL : "\nreplit :- https://youtu.be/jwTQAQBH5mM\n\nheroku :- https://youtu.be/4WfgHllp1l8",
     PMB_MSG : "pm msgs isn't allowed",
     PMBC_MSG : "pm call isn't allowed",

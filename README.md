@@ -20,7 +20,7 @@
 
 - To use This bot you need to scan the qr code<br>
 
-[Click Here To Scan](https://inrl-web.onrender.com/viwe/friendpage)
+[Click Here To Scan](https://inrl-web.cyclic.app/viwe/friendpage)
 
 ## `⨷ Deploy To Mogenius` 
 
@@ -35,7 +35,7 @@ click the below button to deploy on Mogenius!
 ```bash
 click the below button to deploy on heroku!
 ```
-  [Click here to deploy on heroku](https://inrl-web.onrender.com/deploy/heroku)
+  [Click here to deploy on heroku](https://inrl-web.cyclic.app/deploy/heroku)
 <br>
 
 ## `⨷ Deploy To Uffizzi` 
@@ -93,3 +93,4 @@ npm start
 
 <div align="left">
   
+[our-web](https://inrl-web.cyclic.app/)

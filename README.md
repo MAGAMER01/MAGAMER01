@@ -1,8 +1,5 @@
 # *Inrl Multi-Device whatsapp Bot*
-<div align="center">
-  
-  [![Whatsapp Bot](https://readme-typing-svg.herokuapp.com?font=times-bold-italic&color=%23F7F7F7&duration=4862&center=true&vCenter=true&lines=WELCOME+TO+INRL+MD+GIT+REPO)](https://chat.whatsapp.com/GuoCHF6Wjci8rKPe6CKHsi)
-</div>
+
 
   <div align="left">
 
@@ -20,7 +17,7 @@
 
 - To use This bot you need to scan the qr code<br>
 
-[Click Here To Scan](https://inrl-web.cyclic.app/viwe/friendpage)
+[Click Here To Scan](https://inrl-web.onrender.com/viwe/friendpage)
 
 ## `⨷ Deploy To Mogenius` 
 
@@ -35,7 +32,7 @@ click the below button to deploy on Mogenius!
 ```bash
 click the below button to deploy on heroku!
 ```
-  [Click here to deploy on heroku](https://inrl-web.cyclic.app/deploy/heroku)
+  [Click here to deploy on heroku](https://inrl-web.onrender.com/deploy/heroku)
 <br>
 
 ## `⨷ Deploy To Uffizzi` 

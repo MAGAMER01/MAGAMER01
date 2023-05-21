@@ -71,13 +71,13 @@ inrl({
         if (message.quoted == undefined || null) return message.reply('reply to a sticker/audio');
         if (message.quoted.stickerMessage) {
             let pack, auth;
-            if (match.includes(',')) {
-                let i = match.split(',');
+            if (match.includes(';')) {
+                let i = match.split(';');
                 pack = i[0] ? i[0] : STICKER_DATA.split(',')[0];
-                auth = i[1] ? i[1] : STICKER_DATA.split(',')[1];
+                auth = i[1] ? i[1] :  message.pushName
             } else {
-                pack = match || STICKER_DATA.split(',')[0];
-                auth = STICKER_DATA.split(',')[1];
+                pack = match || STICKER_DATA.split(';')[0];
+                auth = message.pushName
             }
             let media = await message.quoted.download();
             return await client.sendFile(message.from, media, "", message, {
@@ -88,13 +88,9 @@ inrl({
             });
         } else if (message.quoted.audioMessage) {
             let text = message.client.text;
-            if (text.includes(' ')) {
-                text = text.trim()
-            }
-            let img = AUDIO_DATA.split(',')[2];
-            if (img.includes(' ')) {
-                img = img.trim()
-            }
+            let img = AUDIO_DATA.split(';')[2];
+            if(!img) return await message.send('unable to get img!\ntry getvar audio_data\nsetvar audio_data=value');
+            img = img.trim()
             img = text.split(',')[2] ? text.split(',')[2] : img;
             let imgForaUdio = await getBuffer(img);
             return await AudioMetaData(imgForaUdio, await message.quoted.download(), message, client);
@@ -132,4 +128,4 @@ inrl({
         });
     }
 })
-//get Labs
+

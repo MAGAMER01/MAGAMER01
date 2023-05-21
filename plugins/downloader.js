@@ -151,7 +151,7 @@ inrl({
 }, async (message, client, match) => {
     if (!match) return message.send('need url after the cmd');
     const response = await mediafireDl(match)
-    if(!response[0]) retrun await message.send('_not found_');
+    if(!response[0]) return await message.send('_not found_');
     await message.reply('name : ' + response[0].nama + '\nsize : ' + response[0].size + '\nlink : ' + response[0].link + '\n\nDownloading..')
     return await client.sendMessage(message.from, {
         document: {

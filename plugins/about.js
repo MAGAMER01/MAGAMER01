@@ -5,7 +5,6 @@ const {
     inrl,
     commands,
     tiny,
-    config,
     inrlQuita,
     insult,
     getBuffer,
@@ -15,7 +14,6 @@ const {
     send_menu
 } = require('../lib')
 const Config = require("../config");
-const categories = ["search", "all", "downloade", "chat", "system", 'fun', '18+', 'apk', 'ff', 'owner', 'create', 'group', "logo", "photo", "sticker", "anime"];
 inrl({
     pattern: 'list',
     desc: 'To viwe list of categories',
@@ -43,16 +41,12 @@ inrl({
     desc: "to delete unwanted grp msg sended by bot",
     sucReact: "⚒️",
     category: ["all"],
-    type: 'whatsapp'
+    type: 'whatsapp',
+    fromMe :true,
+    onlyGroup :true
 }, async (message, client) => {
     try {
-        if (!message.client.isCreator) return message.reply('only for owner!');
-        if (!message.isGroup) return message.reply('this plugin only works in group!');
-        if (!message.quoted) return await client.sendMessage(message.from, {
-            text: "replay to a group content"
-        }, {
-            quoted: message
-        })
+        if (!message.quoted) return;
         let {
             chat,
             fromMe,
@@ -75,15 +69,15 @@ inrl({
     desc: 'To dlt unwanted msg by admin from group content',
     sucReact: "🤌",
     category: ["system", "all"],
-    type: 'whatsapp'
+    type: 'whatsapp',
+    onlyGroup :true
 }, async (message, client, match) => {
     if (match) return;
     try {
         const groupMetadata = message.isGroup ? await client.groupMetadata(message.from).catch(e => {}) : ''
         const participants = message.isGroup ? await groupMetadata.participants : ''
         let admins = message.isGroup ? await participants.filter(v => v.admin !== null).map(v => v.id) : ''
-        if (!message.quoted) return message.reply('reply to a group content');
-        if (!message.isGroup) return message.reply('only works in group');
+        if (!message.quoted) return;
         if (!admins.includes(message.sender)) return message.reply('only for admins');
         return await client.sendMessage(message.from, {
             delete: {
@@ -106,25 +100,6 @@ inrl({
 }, async (message, client, match) => {
     return await send_alive(message, client, match)
 });
-let cTitle = {
-    "search": "Search",
-    "all": 'All',
-    "downloade": "Downloade",
-    "chat": "Chat",
-    "inrl": "Inrl",
-    "ibot": "Ibot",
-    "system": "System",
-    'fun': "Fun",
-    '18+': "18+",
-    "ff:": "Ff",
-    'owner': "Owner",
-    'create': "Create",
-    'group': "Group",
-    "logo": "Logo",
-    "photo": "Photo",
-    "sticker": "Sticker",
-    "anime": "Anime"
-}
 inrl({
     pattern: "menu",
     desc: "it send available cmds list",
@@ -134,33 +109,6 @@ inrl({
 }, async (message, client) => {
     return await send_menu(message, client);
 });
-categories.map(category => {
-    if (category == 'all') return;
-    inrl({
-        pattern: `${category}-menu`,
-        sucReact: "📰",
-        category: ["all", "system"],
-        type: 'get'
-    }, async (message, client) => {
-        let data = await getVar();
-        let {
-            FOOTER,
-            BOT_INFO,
-            PREFIX,
-            GIT
-        } = data.data[0];
-        let prefix = PREFIX == 'false' ? '' : PREFIX;
-        let CMD_HELP = `╭─❒「  ${category}-menu  」 \n`
-        commands.map((command) => {
-            if (command.dontAddCommandList || command.pattern === undefined || command.pattern === null) return;
-            if (command.category.includes(category)) {
-                 CMD_HELP += "│ •  " + command.pattern + "\n"
-            }
-        });
-        CMD_HELP += "│\n╰─❒";
-        return await message.reply(CMD_HELP)
-    })
-})
 inrl({
     pattern: `cmds`,
     sucReact: "🆗",

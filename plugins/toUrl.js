@@ -114,7 +114,7 @@ inrl({
     let {
         STICKER_DATA
     } = data.data[0];
-    if (!match) return message.send('*send to emojis* \n\n _ex_:❣️+🥵');
+    if (!match) return message.send('*send to emojis* \n```ex:❣️+🥵```');
     if (!match.includes('+')) return message.send('*need two emojis*, _Example emojimix_ 🥺+😹');
     let emoji1, emoji2;
     if (match.includes('+')) {
@@ -126,8 +126,8 @@ inrl({
     for (let res of md.results) {
         await client.sendFile(message.from, await getBuffer(res.url), "",message, {
           asSticker: true,
-          author: STICKER_DATA.split(',')[0],
-          packname: STICKER_DATA.split(',')[1],
+          author: STICKER_DATA.split(';')[0],
+          packname: STICKER_DATA.split(';')[1],
           categories: ["😄", "😊"],
         });
     }

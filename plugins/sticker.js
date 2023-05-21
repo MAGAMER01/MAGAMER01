@@ -15,7 +15,7 @@ inrl(
   async (message, client) => {
   let data = await getVar();
   let {STICKER_DATA} = data.data[0];
-    if (/image|video|webp/.test(message.client.mime)) return await message.send(
+    if (!/image|video|webp/.test(message.client.mime)) return await message.send(
           "Reply to Supported media With Caption"
         );
     try {

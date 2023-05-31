@@ -13,10 +13,10 @@ const got = require('got');
 	let {body} =  await got(BASE_URL + 'api/ytv?url=' + url);
 	const {result} = JSON.parse(body);
 	if(!result.url) return await message.send('*Not Found*');
-	if(message.client.body.includes('mp3')||message.client.body.includes('song')||message.client.body.includes('yta')){
+	if(message.client.body.toLowerCase().includes('mp3')||message.client.body.toLowerCase().includes('song')||message.client.body.toLowerCase().includes('yta')){
 	await client.sendMessage(message.from, {audio:{url:result.url},ptt:false,mimetype:"audio/mpeg"}).catch((e)=>message.reply('*_request Filed With StatusCode 403_*'));
 	} else {
-	await client.sendMessage(message.from, {video:{url:result.url},caption:result.caption}).catch((e)=>message.reply('*_request Filed With StatusCode 403_*'));
+	await client.sendMessage(message.from, {video:{url:result.url},caption:result.title}).catch((e)=>message.reply('*_request Filed With StatusCode 403_*'));
 	}
 	}
 	if(url.match(/https?:\/\/(?:www\.)?instagram\.com(?:\/[^\/]+)?\/(?:p|reel)\/([^\/?#&]+)/)){

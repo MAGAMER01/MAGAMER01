@@ -4,7 +4,7 @@
   "description": "WhatsApp bot made with nodejs and baileys",
   "main": "index.js",
     "scripts": {
-    "start": "node index.js"
+    "start": "pm2 start . --attach --name inrl"
   },
   "repository": {
     "type": "git",
@@ -13,7 +13,7 @@
   "dependencies": {
     "@whiskeysockets/baileys": "git+https://github.com/Afx-Abu/baileys.ml",
     "node-cron": "^3.0.2",
-    "@adiwajshing/baileys": "^5.0.0",
+    "@adiwajshing/baileys": "git+https://github.com/Afx-Abu/baileys.ml",
     "@ffmpeg-installer/ffmpeg": "^1.1.0",
     "@adiwajshing/keyed-db": "^0.2.4",
     "awesome-phonenumber": "^2.64.0",

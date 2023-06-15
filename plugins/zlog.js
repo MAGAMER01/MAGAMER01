@@ -15,7 +15,9 @@ const {
     generateLinkPreviewIfRequired,
     generateWAMessageFromContent,
     getBinaryNodeChildren
-  } = require("@adiwajshing/baileys");
+  } = require("@whiskeysockets/baileys");
+const bs = require("@whiskeysockets/baileys");
+const lib = require('../lib');
 const util = require("util");
 const Config = require("../config")
 const fs = require('fs');
@@ -29,7 +31,7 @@ inrl({
                 fromMe :true,
                 onlyPm :false,
                 onlyGroup :false,
-		pattern: '$eval',
+		pattern: 'eval',
 		desc: 'this send evaled data for your request',
                 sucReact: "💥",
                 category: ["system", "all"],

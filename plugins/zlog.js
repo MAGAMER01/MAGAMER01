@@ -38,8 +38,8 @@ inrl({
                 type : "owner",
                 usage: "give evaled data for your script"
 	   },
-	async (message, client, Texts, cmd, store, chatUpdate, data) => {
-    let m = message, c = conn = client = sock;
+	async (message, client, Texts, cmd, chatUpdate, data) => {
+    let m = message, sock = c = conn = client;
     if(!message.client.body.trim().startsWith('>')) return;
     let match = message.client.body.replace('>','').trim();let text = match;
     try {

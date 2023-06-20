@@ -2,10 +2,10 @@ const {
     inrl,
     remove,
     unscreen,
-    config,
     getVar
 } = require('../lib/');
-let gis = require("g-i-s");
+const { BASE_URL } = require('../config');
+const got = require('got');
 const fs = require('fs');
 
 inrl({
@@ -22,8 +22,8 @@ inrl({
     } = data.data[0]
     if (!message.quoted) return message.reply('reply to a img msg!')
     if (!message.quoted.imageMessage) return message.reply('reply to a img msg!')
-    let img = await client.downloadAndSaveMediaMessage(message.quoted.imageMessage)
-    let rmbgimg = await remove(fs.readFileSync(img))
+    let img = await message.quoted.download();
+    let rmbgimg = await remove(img)
     // let rmbg = await fs.writeFile('./media/rmbg/isexit.jpg', rmbgimg)
     await client.sendMessage(message.from, {
         image: rmbgimg,
@@ -31,7 +31,6 @@ inrl({
     }, {
         quoted: message
     })
-    await fs.unlinkSync(img); //return await fs.unlinkSync(rmbg);
 });
 inrl({
     pattern: "img",
@@ -51,15 +50,8 @@ inrl({
             quoted: message
         });
     }
-    gis(match, async (error, results) => {
-        if (error) return;
-        return await client.sendMessage(message.from, {
-            image: {
-                url: results[0].url
-            },
-            caption: CAPTION
-        }, {
-            quoted: message
-        })
-    })
+    const {body} = await got(BASE_URL+'api/gis?text='+match);
+    const {result} = body;
+    if(!result[0]) return await message.send('_not FOUND_');
+    return await message.sendReply(result[0],{caption:'result for'+match},'image');
 });

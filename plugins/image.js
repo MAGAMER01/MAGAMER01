@@ -22,8 +22,8 @@ inrl({
     } = data.data[0]
     if (!message.quoted) return message.reply('reply to a img msg!')
     if (!message.quoted.imageMessage) return message.reply('reply to a img msg!')
-    let img = await message.quoted.download();
-    let rmbgimg = await remove(img)
+    let img = await client.downloadAndSaveMediaMessage(message.quoted.imageMessage)
+    let rmbgimg = await remove(fs.readFileSync(img))
     // let rmbg = await fs.writeFile('./media/rmbg/isexit.jpg', rmbgimg)
     await client.sendMessage(message.from, {
         image: rmbgimg,
@@ -31,6 +31,7 @@ inrl({
     }, {
         quoted: message
     })
+    await fs.unlinkSync(img); //return await fs.unlinkSync(rmbg);
 });
 inrl({
     pattern: "img",

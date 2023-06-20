@@ -51,7 +51,7 @@ inrl({
         });
     }
     const {body} = await got(BASE_URL+'api/gis?text='+match);
-    const {result} = body;
+    const {result} = JSON.parse(body);
     if(!result[0]) return await message.send('_not FOUND_');
     return await message.sendReply(result[0],{caption:'result for'+match},'image');
 });

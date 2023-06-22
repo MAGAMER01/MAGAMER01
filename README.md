@@ -1,5 +1,7 @@
 # *Inrl Multi-Device whatsapp Bot*
 
+## _Support this project: [Buy Me A Coffee](https://inrl-web.onrender.com/support/donate) 💖_
+  
 
   <div align="left">
 
@@ -34,15 +36,6 @@ click the below button to deploy on heroku!
 ```
   [Click here to deploy on heroku](https://inrl-web.onrender.com/deploy/heroku)
 <br>
-
-## `⨷ Deploy To Uffizzi` 
-
-```bash
-first you fork the repo and edit config.js!, add session id & your credits!
-```
-  [Click here to deploy on Uffizzi](https://app.uffizzi.com/projects)
-<br>
-
 
 ## `⨷ Deploy To Railway` 
   

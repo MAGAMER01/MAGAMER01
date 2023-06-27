@@ -18,6 +18,7 @@ module.exports = {
     WAGRP : 'https://chat.whatsapp.com/ECjTvQMK5D6Bayzu6rJ7Ot',
     ALLWAYS_ONLINE: toBool(process.env.ALLWAYS_ONLINE || "true"),
     REACT : toBool(process.env.REACT || "false"),
+    ANTI_SPAM : toBool(process.env.ANTI_SPAM || "false"),
     AUTO_BIO : toBool(process.env.AUTO_BIO || "false"),
     PM_BLOCK : toBool(process.env.PM_BLOCK || "false"),
     BGMBOT : toBool(process.env.BGMBOT || "false"),

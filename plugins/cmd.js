@@ -6,7 +6,7 @@ const {
 } = require("../lib")
 
 inrl({
-    pattern: '$setcmd',
+    pattern: 'setcmd',
     desc: 'To set media as a cmd',
     sucReact: "😛",
     category: ["system", "all"],
@@ -20,7 +20,7 @@ inrl({
     return await message.reply("successfull")
 });
 inrl({
-    pattern: '$dltcmd',
+    pattern: 'dltcmd',
     desc: 'To dlt media d as alrdy set',
     sucReact: "💥",
     category: ["system", "all"],
@@ -32,7 +32,7 @@ inrl({
     return await message.reply("successfull")
 });
 inrl({
-    pattern: '$getcmd',
+    pattern: 'getcmd',
     desc: 'To dlt media d as alrdy set',
     sucReact: "💥",
     category: ["system", "all"],

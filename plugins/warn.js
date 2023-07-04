@@ -11,7 +11,7 @@ const {
 } = require('../lib')
 
 inrl({
-    pattern: '$warn',
+    pattern: 'warn',
     desc: 'To warn a user in group',
     sucReact: "😑",
     category: ["system", "all"],
@@ -58,7 +58,7 @@ inrl({
     };
 })
 inrl({
-    pattern: '$resetwarn',
+    pattern: 'resetwarn',
     desc: 'To remove warn count of a user',
     sucReact: "💥",
     category: ["system", "all"],
@@ -71,6 +71,6 @@ inrl({
         const g = message.from;
         const t = match || "reset";
         const d = await ResetWarn(u, g, t)
-        return await message.reply(`_reset ${u} your warn count in ${g}_`);
+        return await message.reply(`_successfull_`);
     }
 });

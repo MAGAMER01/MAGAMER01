@@ -1,39 +1,33 @@
 {
-	"name": "inrl",
-	"description": "inrl-wa-bot-md",
-	"keywords": [],
+	"name": "Deploy",
+	"description": "inrl-md",
+	"keywords": [
+		"inrl"
+	],
+	"repository": "https://github.com/inrl-official/inrl-bot-md",
 	"stack": "container",
 	"env": {
 	"SESSION_ID": {
 		"description": "to run the bot",
-		"required": true,
-		"value": ""
+		"required": true
 		},
        "HEROKU_API_KEY": {
             "description": "For updating bot and setting vars remotely",
-            "required": true,
-            "value":""
+            "required": true
         },
         "HEROKU_APP_NAME": {
             "description": "Exact name which you gave at the top",
-            "required": true,
-            "value":""
+            "required": true
         },
 	"MONGO_URL": {
 		"description": "enter db url to work the bot without limit",
-		"required": false,
-		"value": ""
+		"required": false
 		}
-	}
-"buildpacks": [
-    {
-      "url": "heroku/nodejs"
-    },
-    {
-      "url": "https://github.com/jonathanong/heroku-buildpack-ffmpeg-latest"
-    },
-    {
+	},
+"buildpacks": [{
+      "url": "heroku-community/apt"
+      },
+      {
       "url": "https://github.com/clhuang/heroku-buildpack-webp-binaries.git"
-    }
-  ]
+      }]
 }

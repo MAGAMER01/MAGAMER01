@@ -5,7 +5,7 @@ const {
     } = require('../config'),
     got = require('got');
 inrl({
-    pattern: "gpt",
+    pattern: "$gpt",
     sucReact: "🤝",
     category: ["all", "create"],
     type: "eva"
@@ -90,62 +90,6 @@ inrl({
     } else {
         await client.updateBlockStatus(message.from, "unblock") // Unblock user
     }
-});
-inrl({
-    pattern: 'tagall',
-    desc: 'To tag all group member',
-    sucReact: "😄",
-    category: ["system", "all"],
-    type: "owner",
-    fromMe :true,
-    onlyGroup :true
-}, async (message, client, match) => {
-    const groupMetadata = await client.groupMetadata(message.from).catch(e => {})
-    const participants = await groupMetadata.participants
-    let admins = await participants.filter(v => v.admin !== null).map(v => v.id)
-    let msg = "╭─❮ ʜᴇy ᴀʟʟ 😛🪄 ❯ ─⊷❍\n",
-        ext;
-    let count = 1;
-    ext = `│${message.quoted?message.quoted.text||'hi all😚':match||'hi all🤎'}\n`
-    msg += (typeof ext !== 'string' ? 'hy all😚' : ext)
-    for (let mem of participants) {
-        msg += `│${count++}  @${mem.id.split('@')[0]}\n`
-    }
-    msg += "╰───────────⊷❍";
-    return await client.sendMessage(message.key.remoteJid, {
-        text: msg,
-        mentions: participants.map(a => a.id)
-    }, {
-        quoted: message
-    });
-});
-inrl({
-    pattern: 'tagadmin',
-    desc: 'To tag all group member',
-    sucReact: "😄",
-    category: ["system", "all"],
-    type: "owner",
-    fromMe :true,
-    onlyGroup :true
-}, async (message, client, match) => {
-    const groupMetadata = await client.groupMetadata(message.from).catch(e => {})
-    const participants = await groupMetadata.participants
-    let admins = await participants.filter(v => v.admin !== null).map(v => v.id)
-    let msg = "╭─❮ ʜᴇy ᴀᴅᴍɪɴꜱ🪄 ❯ ─⊷❍\n",
-        ext;
-    ext = `│${message.quoted?message.quoted.text||'hi all😚':match||'hi all🤎'}\n`
-    msg += (typeof ext !== 'string' ? 'hy all😚' : ext)
-    let count = 1;
-    for (let mem of admins) {
-        msg += `│${count++}  @${mem.split('@')[0]}\n`
-    }
-    msg += "╰───────────⊷❍";
-    return await client.sendMessage(message.key.remoteJid, {
-        text: msg,
-        mentions: participants.map(a => a.id)
-    }, {
-        quoted: message
-    });
 });
 inrl({
     pattern: 'frd',
@@ -243,6 +187,6 @@ inrl({
             });
         }
     } catch (e) {
-        message.reply('error\n' + e)
+        message.reply('_field_');
     }
 });

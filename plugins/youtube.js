@@ -72,7 +72,6 @@ const {result} = data;
 m.client.text= result[0].url;
 return await downloadYT(m, m.conn,'mp4');
 } else if(m.client.body.includes("YT SONG DOWNLOADER")){
-m.send("thsi under😉");
 match = m.client.body.replace("YT SONG DOWNLOADER").trim();
 await m.send(`_downloading_\n${match}`);
 const {data} = await axios(BASE_URL+`api/yts?text=${match}`);

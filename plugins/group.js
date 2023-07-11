@@ -475,30 +475,6 @@ inrl({
     }
 });
 inrl({
-    pattern: "tag",
-    desc: 'no desc',
-    sucReact: "💯",
-    category: ["system", "all"],
-    type: "whatsapp",
-    onlyGroup: true
-}, async (m, conn, match) => {
-    let admin = await isAdmin(m, conn);
-    let BotAdmin = await isBotAdmin(m, conn);
-    if (!admin && !m.client.isCreator) return await m.reply('Action only For admin or Owner');
-    const groupMetadata = await conn.groupMetadata(m.key.remoteJid).catch((e) => {});
-    const participants = await groupMetadata.participants;
-    if (m.quoted) {
-        match = match || m.quoted.text;
-    }
-    if (!match) return await m.reply('need text');
-    conn.sendMessage(m.key.remoteJid, {
-        text: match,
-        mentions: participants.map((a) => a.id),
-    }, {
-        quoted: m,
-    });
-});
-inrl({
     pattern: "promote",
     usage: '<mentions|reply>',
     sucReact: "😎",
